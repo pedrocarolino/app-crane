@@ -61,8 +61,8 @@ export class GuindasteComponent implements OnInit {
     }
     if (flag === 1) {
       this.historico.push(historico);
-      this.getStatus();
       const response = await this.GuindasteService.saveRegister({registro});
+      this.getStatus();
     }
   }
   async getHistorico() {
