@@ -6,15 +6,15 @@
   <h2 id="status">Status</h2>
 
   <h3 id="angulostatus">Angulo</h3>
-  <p id="getangulo">angulo{{getAngulo}}</p>
+  <p id="getangulo">{{form.angulo}}</p>
   <div id="barraangulo"></div>
 
   <h3 id="alturastatus">Altura</h3>
-  <p id="getaltura">altura{{getAltura}}</p>
+  <p id="getaltura">{{form.altura}}</p>
   <div id="barraaltura"></div>
 
   <h3 id="eletroimastatus">Eletroima</h3>
-  <p id="geteletroima">eletroima{{getEletroima}}</p>
+  <p id="geteletroima">{{eletroima}}</p>
   <div id="barraima"></div>
 
   <h2 id="input">Input</h2>
@@ -29,10 +29,27 @@
 
   <button class="botao botaoligaima" (click)="liga()">Ligar</button>
   <button class="botao botaodesligaima" (click)="desliga()">Desligar</button>
-  <button class="botao botaoligar" (click)="submitNew()">Start</button>
+  <button class="botao botaoligar" (click)="submitNew()">Enviar</button>
   <button class="botao inicializar" (click)="submitInicializar()">Iniciar</button>
   <div id="barradivisao"></div>
   <h2 id="historico">Historico</h2>
+
+  <div>
+    <table>
+      <tr>
+        <td>Perguntas:</td>
+        <td ng-repeat="a in answer">
+          <label>
+            <input value="{{form.altura}}" style="width:40px"/>
+          </label>
+          <button ng-click="delAnswer($index)"> -</button>
+        </td>
+        <td>
+          <button type="button" ng-click="addAnswer()"> +</button>
+        </td>
+      </tr>
+    </table>
+  </div>
 
 </div>
 
