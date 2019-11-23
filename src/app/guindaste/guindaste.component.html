@@ -30,25 +30,14 @@
   <button class="botao botaoligaima" (click)="liga()">Ligar</button>
   <button class="botao botaodesligaima" (click)="desliga()">Desligar</button>
   <button class="botao botaoligar" (click)="submitNew()">Enviar</button>
-  <button class="botao inicializar" (click)="submitInicializar()">Iniciar</button>
+<!--  <button class="botao inicializar" (click)="submitInicializar()">Iniciar</button>-->
   <div id="barradivisao"></div>
   <h2 id="historico">Historico</h2>
 
-  <div>
-    <table>
-      <tr>
-        <td>Perguntas:</td>
-        <td ng-repeat="a in answer">
-          <label>
-            <input value="{{form.altura}}" style="width:40px"/>
-          </label>
-          <button ng-click="delAnswer($index)"> -</button>
-        </td>
-        <td>
-          <button type="button" ng-click="addAnswer()"> +</button>
-        </td>
-      </tr>
-    </table>
+  <div id="historicoLayout2">
+    <div id="historicoLayout" *ngFor="let historico of historico">
+      <p id="historicoLayout3">Angulo: {{historico.angulo}} Altura: {{historico.altura}} Eletroima:{{historico.eletroima}}</p>
+    </div>
   </div>
 
 </div>

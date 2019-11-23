@@ -5,8 +5,6 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class GuindasteServService {
-  private dados: any;
-
   constructor(public http: HttpClient) { }
 
   async saveRegister(register: any) {
@@ -26,6 +24,6 @@ export class GuindasteServService {
   }
 
   async getStatus() {
-    return this.http.get<any>('http://localhost:3000/controllers/function/guindaste/status', this.dados).toPromise();
+    return this.http.get<any>('http://localhost:3000/controllers/function/guindaste/status').toPromise();
   }
 }

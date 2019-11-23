@@ -15,12 +15,9 @@ export class GuindasteComponent implements OnInit {
     altura: 0,
     angulo: 0
   };
-  data = [];
+  historico = [];
   nomeOperador = null;
   eletroima = 0;
-  getAngulo = 0;
-  getAltura = 0;
-  getEletroima = 0;
 
   async submitNew() {
     const registro = {
@@ -28,6 +25,12 @@ export class GuindasteComponent implements OnInit {
       angulo: this.form.angulo,
       eletroimaStatus: this.eletroima,
       nomeOperador: this.nomeOperador
+    };
+    let historico = {
+      altura: this.form.altura,
+      angulo: this.form.angulo,
+      eletroimaStatus: this.eletroima,
+      eletroima: 'Desativado'
     };
     let flag = 0;
     if (this.form.angulo >= -180 && this.form.angulo <= 180) {
@@ -51,13 +54,20 @@ export class GuindasteComponent implements OnInit {
       flag = 1;
     }
     console.log(registro);
+    if (this.eletroima === 1) {
+      historico.eletroima = 'Ativo';
+    } else {
+      historico.eletroima = 'Desativo';
+    }
     if (flag === 1) {
+      this.historico.push(historico);
       const response = await this.GuindasteService.saveRegister({registro});
     }
   }
-  refreshAngulo(form) {
-    this.getAngulo = form.angulo;
+  async getHistorico() {
+    this.historico = await this.GuindasteService.getStatus();
   }
+
   liga() {
     this.eletroima = 1;
   }
