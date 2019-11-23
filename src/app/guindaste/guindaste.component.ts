@@ -26,7 +26,7 @@ export class GuindasteComponent implements OnInit {
       eletroimaStatus: this.eletroima,
       nomeOperador: this.nomeOperador
     };
-    let historico = {
+    const historico = {
       altura: this.form.altura,
       angulo: this.form.angulo,
       eletroimaStatus: this.eletroima,
@@ -66,6 +66,13 @@ export class GuindasteComponent implements OnInit {
   }
   async getHistorico() {
     this.historico = await this.GuindasteService.getStatus();
+  }
+
+  async getStatus() {
+    const response = await this.GuindasteService.getStatusLayout();
+    this.form.angulo = response.angulo;
+    this.form.altura = response.altura;
+    this.eletroima = response.eletroima;
   }
 
   liga() {

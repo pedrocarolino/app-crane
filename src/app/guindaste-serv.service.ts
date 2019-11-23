@@ -26,4 +26,8 @@ export class GuindasteServService {
   async getStatus() {
     return this.http.get<any>('http://localhost:3000/controllers/function/guindaste/status').toPromise();
   }
+
+  async getStatusLayout() {
+    return this.http.get<any>('http://localhost:3000/controllers/function/guindaste/statusLayout').toPromise();
+  }
 }
